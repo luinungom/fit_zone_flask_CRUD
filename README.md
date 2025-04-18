@@ -1,3 +1,3 @@
-Gym customer management CRUD app using Python, Flask, WTForms and MySQL.
+Gym customer management CRUD app using Python, Boostrap, Flask, WTForms and MySQL.
 
-![imagen](https://github.com/user-attachments/assets/1975611e-999a-4900-9b6d-96169f265361)
+![imagen](https://github.com/user-attachments/assets/822ace0e-ee20-4513-84fc-7789df34baa8)
