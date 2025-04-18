@@ -6,6 +6,7 @@ from customer import Customer
 
 class CustomerDao:
     SELECT = 'SELECT * FROM customers ORDER BY id'
+    SELECT_ID = 'SELECT * FROM customers WHERE id = %s'
     INSERT = 'INSERT INTO customers (name, surname, membership) VALUES (%s, %s, %s)'
     UPDATE = 'UPDATE customers SET name = %s, surname = %s, membership = %s WHERE id = %s'
     DELETE = 'DELETE FROM customers WHERE id = %s'
@@ -53,3 +54,14 @@ class CustomerDao:
                     connection.commit()
         except Error as e:
             print(f'Error deleting customer: {e}')
+
+    @classmethod
+    def get_customer_by_id(cls, customer_id):
+        try:
+            with Connection.get_connection() as connection:
+                with connection.cursor() as cursor:
+                    cursor.execute(cls.SELECT_ID, (customer_id,))
+                    register = cursor.fetchone()
+                    return Customer(register[0], register[1], register[2], register[3])
+        except Error as e:
+            print(f'Error getting customer by id: {e}')
